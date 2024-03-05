@@ -15,6 +15,7 @@ export default function Page() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = () => {
     if (email && password) {
@@ -44,6 +45,7 @@ export default function Page() {
             onChangeText={(text) => setEmail(text)}
           />
         </View>
+
         <View className="flex flex-col w-full justify-center items-start px-12">
           <Text className="mb-2 text-primary text-xl">Password</Text>
           <TextInput
@@ -54,12 +56,23 @@ export default function Page() {
             onChangeText={(text) => setPassword(text)}
           />
         </View>
+        <View className="flex flex-col w-full justify-center items-start px-12">
+          <Text className="mb-2 text-primary text-xl">Confirm Password</Text>
+          <TextInput
+            className="mb-4 rounded-full border-2 border-primary p-4 w-full text-primary placeholder:text-tertiary"
+            placeholder="Confirm your password"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            value={confirmPassword}
+            onChangeText={(text) => setConfirmPassword(text)}
+          />
+        </View>
         <Pressable
           className="mb-4 bg-primary rounded-full py-3 px-4 w-4/5"
           onPress={handleLogin}
         >
           <Text className="font-bold text-lg text-center text-accent">
-            Login
+            Register
           </Text>
         </Pressable>
 
@@ -77,9 +90,9 @@ export default function Page() {
             Sign in with Google
           </Text>
         </Pressable>
-        <Link href="/register" className="mt-4 text-tertiary">
-          Don't you have an account?{" "}
-          <Text className="text-primary font-bold">Register</Text>
+        <Link href="/" className="mt-4 text-tertiary p-4">
+          Already have an account?{" "}
+          <Text className="text-primary font-bold">Login</Text>
         </Link>
       </View>
     </TouchableWithoutFeedback>
